@@ -19,5 +19,6 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
         <mapping class = "com.mouritech.hibernateexample.entity.Student"/>
+        <mapping class = "com.mouritech.hibernateexample.entity.Course"/>
     </session-factory>
 </hibernate-configuration>

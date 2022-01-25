@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+     xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+ 
+    <persistence-unit
+        name="PERSISTENCE"
+        >
+ 
+        <description>
+            Hypersistence Optimizer is a dynamic analyzing tool that can scan
+            your JPA and Hibernate application and provide you tips about the
+            changes you need to make to entity mappings, configurations, queries,
+            and Persistence Context actions to speed up your data access layer.
+        </description>
+ 
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+ 
+        <class>jpaclassandinterfaceexample.entity.Student</class>
+ 
+        <properties>          
+            <property
+                name="javax.persistence.jdbc.Driver"
+                value="com.mysql.cj.jdbc.Driver"/>
+            <property
+                name="javax.persistence.jdbc.url"
+                value="jdbc:mysql://localhost:3306/mouritech_hibernateexamples"/>
+           <property
+                name="javax.persistence.jdbc.user"
+                value="root"/>
+           <property
+                name="javax.persistence.jdbc.password"
+                value="root"/>
+           <property
+                name="hibernate.show_sql"
+                value="true"/> 
+           <property
+                name="hibernate.hbm2ddl.auto"
+                value="create"/>     
+        </properties>
+    </persistence-unit>
+</persistence>

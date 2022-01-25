@@ -1,22 +1,23 @@
-package com.mouritech.hibernateexample.entity;
+package jpaclassandinterfaceexample.entity;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 /*
  * Persistant class which is converted in to table 
  * in the database
  */
 @Entity
+@Table(name = "student_entity")
 public class Student {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long studId;
 	private String studFirstName;
 	private String studLastName;
@@ -83,8 +84,7 @@ public class Student {
 		this.studContactNo = studContactNo;
 	}
 
-	@ManyToMany(mappedBy ="course" ,cascade = {CascadeType.ALL})
-	private List<Course> courses;
+
 
 	@Override
 	public String toString() {
@@ -95,3 +95,4 @@ public class Student {
 	
 
 }
+

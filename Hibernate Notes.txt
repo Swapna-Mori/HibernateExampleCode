@@ -1,0 +1,221 @@
+What is ORM?
+===============
+Object Relational Mapping or ORM is a programming technique to map java objects(application domain model object) to the relational database tables.
+
+model class = entity class = persistence class => POJO class (Plain Old Java Object class) => which containts
+data members + setters + getters + constructors + toString() 
+
+Hibernate is a Java based ORM Framework for mapping application domain object to relational db.
+
+Advantages of 
+JDBC
+=================
+Clean and simple SQL processing
+Good performance
+good for small application
+simple and easy to learn
+
+Cons/disadvantages of 
+JDBC
+===================
+not suitable for complex or large data processing projects
+developer has to write code for manipulation of data or to retrieve the data
+very difficult to implement 3-tier architecture(MVC)
+JDBC queries are Database specific
+
+When developers write the code to store the data in relational database there is a chance of mismatch between object model and relational database.
+So,to remove this any mismatches between object oriented languages and relational db we can connect both using ORM tool.
+
+What kind of mismatch can occur between the object oriented programming code and relational db:
+=================================================================================
+=> in relational db's there is not concept of Inheritance.
+=> Using relational db's representing Associations between the tables is done using foreign key column where as in object oriented programming association is represented using object references not on particular variable.
+=> Comapring the data between two rows is done using ==  operator,where as objects are compared using equals method
+
+Advantages of ORM tool:
+====================
+=> Focus on writing the business code rather than DB tables
+=> Application can be developed less time 
+=> ORM tool forces for Automatic key generation using @Id annotation on a variable to convert that in to primary key
+
+
+JPA
+===
+Java Persistence API
+==================
+Hibernate is the implementation of JPA(JPA is an interface)
+
+JPA helps to create CRUD operation on Objects of Persistent class(Entity Objects).
+
+
+Important Hibernate API's
+=====================
+SessionFactory:
+=============
+org.hibernate.SessionFactory
+
+A thread safe immutable representation of the mapping of the application domain model to a database.
+it acts as a factory for session(db session)  (org.hibernate.Session )instances
+
+As SessionFactory is very expensive to create and maintain so only one SessionFactory is associated for an application.
+
+SessionFactory maintains services that Hibernate requires across all Session(s) such as
+Second-Level Caches,
+Connection Pools,
+Transaction System Integration etc.,
+
+Session
+=======
+org.hibernate.Session
+
+A single thread / a unit of work 
+
+In JPA,Session is represented by EntityManager
+
+
+Behind the scenes,Session Wraps a JDBC (java.sql.connection) and acts as a factory for (db transactions)
+org.hibernate.Transaction instances
+
+Transaction
+==========
+org.hibernate.Transaction
+
+a conversation between the application and the datastore.
+A transaction is associated with a Session and is usually instantiated by a call to Session.beginTransaction(). 
+
+JAVA ORM Frameworks
+====================
+Enter JavaBeans Entity Beans
+Java Data Objects
+Castor
+TopLink
+Spring DAO
+Hibernate
+etc.,
+
+About JPA(Java Persistence API)
+===========================
+A standard for mapping java objects to a relational database.
+Mapping Java object to db tables and vice versa it is called as ORM(Object Relational Mapping).
+Using JPA the developer can 
+ 	map
+	store
+	update
+	retrieve and 
+	delete data from the db to object and vice versa.
+JPA just provides specifications not implementation
+JPA implementation is provided reference to many vendors like Hibernate ,EclipseLink and Apcahe OpenJPA etc., for developing the above O/R mapper.
+JPA helps the developer to work directly with the objects rather than SQL statements.
+
+
+JPA Providers ,vendors that implements JPA standards/specifications such as ORacle,Redhat,Eclipse etc .some of the products are listed below
+============
+Hibernate ,
+EclipseLink and 
+Apcahe OpenJPA
+
+Packages that provide specifications fo JPA
+=====================================
+javax.persistence
+================	
+Java Persistence is the API for the management for persistence and object/relational mapping.
+javax.persistence.criteria
+========================	
+Java Persistence Criteria API
+javax.persistence.metamodel
+========================	
+Java Persistence Metamodel API
+javax.persistence.spi
+====================	
+SPI for Java Persistence providers
+
+
+JPA Entity Class/Persistent Class (POJO class annotated with @Entity)
+===========================
+1. to define an entity class a java class should be annotated with
+@Entity 
+
+2. The class must be public or protecte with no-argument constructor,it may have other constructors.
+
+3. The class must not be declared final,no methods or data(instance variables) must be declared as final.
+
+4. Persistent Instance Variables must be declared private,protected or package
+
+5. create accessor(getters and setters) or business methods for accessing instance variables
+
+6. It can extend both entity or non-entity classes and non-entity classes can extend entity classes.
+
+7. It is good practice to implement serializable interface
+
+
+
+An Instance variable or properties or persistent fields in Entity class
+========================================================
+java primitive data types
+java.lang.String
+Wrapper Classes for Primitive data types
+java.math.BigInteger
+java.math.BigDecima;
+java.util.Date
+java.util.Calendar
+java.sql.Date
+java.sql.Time
+java.sql.TimeStamp
+etc.,
+Enumerations
+Embedded Classes
+
+
+Collection Interfaces of Java can be used to declare Entity fields(persistent fields) and properties.
+The following collection interfaces may be used:
+
+java.util.Collection
+java.util.Set
+java.util.List
+java.util.Map
+
+Example:
+========
+	@ManyToMany(mappedBy ="course")
+	private List<Course> courses;
+
+PrimaryKeys in Entities
+====================
+javax.persistence.Id => denote a primary key property or field in entity class
+
+Specifies the primary key of an entity.The field or property to which the Id annotation is appliedshould be one of the following types: any Java primitive type;any primitive wrapper type; String; java.util.Date; java.sql.Date; java.math.BigDecimal; java.math.BigInteger. 
+
+The mapped column for the primary key of the entity is assumedto be the primary key of the primary table. If no Column annotationis specified, the primary key column name is assumed to be the nameof the primary key property or field. 
+   Example:
+
+   @Id
+   public Long getId() { return id; }
+
+Relationship Mapping
+==================
+JPA allows to define relationships between classes using following annotaions
+
+1. @OneToOne
+2. @OneToMany
+3. @ManyToOne
+4. @ManyToMany etc.,
+
+
+Cascading Operations and Relationships
+====================================
+Entities that use relationships often have dependenies on the existence of other entityy in the relationship.
+
+javax.persistence.CascadeType; it is an enumeration that defines different types of cascade operations
+
+Below are list of cascade operations listed in CascadeType enumeration:
+===========================================================
+ALL
+
+
+1. DETACH 
+2. MERGE
+3. PERSIST
+4. REFRESH
+5. REMOVE
+
+

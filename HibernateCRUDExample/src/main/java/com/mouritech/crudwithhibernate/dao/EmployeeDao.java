@@ -49,7 +49,34 @@ public class EmployeeDao {
 				
 		
 	}
+	public void deleteEmployee1(Employee emp) {
+		Transaction transaction1 = null;
+		try (Session session1 = HibernateUtil.getSessionFactory().openSession()) {
+			
+			// start the transaction
+			transaction1 = session1.beginTransaction();
+			Employee deleteEmp = session1.get(Employee.class, emp.getEmpId());
+			System.out.println(deleteEmp);
+			if(deleteEmp!=null) {
+				session1.delete(deleteEmp);
+				System.out.println("Employee deleted successfully");
+			}
+			
+			/*
+			 * Employee emp2 = new Employee(); emp2.setEmpId(empid); session1.delete(emp2);
+			 * System.out.println("Employee deleted"); transaction1.commit();
+			 */
+			transaction1.commit();
+			
+		}catch (Exception e) {
+			if (transaction1 != null) {
+				transaction1.rollback();
+			}
 
+			e.printStackTrace();
+		}
+		
+	}
 	public void deleteEmployee(Class<?> type,Serializable empid) {
 		Transaction transaction1 = null;
 		try (Session session1 = HibernateUtil.getSessionFactory().openSession()) {
@@ -57,6 +84,7 @@ public class EmployeeDao {
 			// start the transaction
 			transaction1 = session1.beginTransaction();
 			Employee emp = session1.get(Employee.class, empid);
+			System.out.println(emp);
 			if(emp!=null) {
 				session1.remove(emp);
 				System.out.println("Employee deleted successfully");
@@ -66,6 +94,7 @@ public class EmployeeDao {
 			 * Employee emp2 = new Employee(); emp2.setEmpId(empid); session1.delete(emp2);
 			 * System.out.println("Employee deleted"); transaction1.commit();
 			 */
+			transaction1.commit();
 			
 		}catch (Exception e) {
 			if (transaction1 != null) {

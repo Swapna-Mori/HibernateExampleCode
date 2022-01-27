@@ -63,4 +63,11 @@ public class EmployeeService {
 		empdao.getEmployeeById(empid);
 	}
 
+	public void deleteEmployee1() {
+		System.out.println("Enter the employee id....");
+		Long empid = sc.nextLong();
+		empdao.deleteEmployee1(empid);
+		
+	}
+
 }

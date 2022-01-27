@@ -49,13 +49,13 @@ public class EmployeeDao {
 				
 		
 	}
-	public void deleteEmployee1(Employee emp) {
+	public void deleteEmployee1(Long empid) {
 		Transaction transaction1 = null;
 		try (Session session1 = HibernateUtil.getSessionFactory().openSession()) {
 			
 			// start the transaction
 			transaction1 = session1.beginTransaction();
-			Employee deleteEmp = session1.get(Employee.class, emp.getEmpId());
+			Employee deleteEmp = session1.get(Employee.class, empid);
 			System.out.println(deleteEmp);
 			if(deleteEmp!=null) {
 				session1.delete(deleteEmp);

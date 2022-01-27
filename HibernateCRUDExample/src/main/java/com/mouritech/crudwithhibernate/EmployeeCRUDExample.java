@@ -16,6 +16,7 @@ public class EmployeeCRUDExample {
 			System.out.println("save : to insert a new employee");
 			System.out.println("update : to update an employee");
 			System.out.println("delete : to delete an employee");
+			System.out.println("delete1 : to delete an employee");
 			System.out.println("getall : to get all employee details");
 			System.out.println("get : to get an employee detail");
 			transaction = sc.next();
@@ -28,6 +29,9 @@ public class EmployeeCRUDExample {
 				break;
 			case "delete":
 				empService.deleteEmployee();
+				break;
+			case "delete1":
+				empService.deleteEmployee1();
 				break;
 			case "update":
 				empService.getDetailsToUpdate();

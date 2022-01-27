@@ -218,5 +218,16 @@ ALL
 4. REFRESH
 5. REMOVE
 
+Practice Program on Hibernate CRUD
+===============================
+Write code for implementing Cread,Read,Update and Delete Customer Entity using Hibernate.
+Customer Id should be generated randomly and inserted.
+while updating the details of the customer if more than one details is updated or single detail is updated should be done based on user choice.
+Customer entity contains customerId,customerName,customerEmail,customerMobno,customerAddress
 
+Practice Program on Hibernate Query Example
+========================================
+Write code for finding the customer using the customer name
+delete the customer using customer emailid
+update customer mobile number using customer name
 

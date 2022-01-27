@@ -70,4 +70,10 @@ public class EmployeeService {
 		
 	}
 
+	public void deleteByName() {
+		System.out.println("Enter the employee name....");
+		String empName=sc.nextLine();
+		empdao.deleteByName(empName);
+	}
+
 }

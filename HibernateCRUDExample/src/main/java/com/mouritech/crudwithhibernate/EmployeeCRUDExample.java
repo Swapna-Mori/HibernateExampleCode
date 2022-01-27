@@ -19,6 +19,7 @@ public class EmployeeCRUDExample {
 			System.out.println("delete1 : to delete an employee");
 			System.out.println("getall : to get all employee details");
 			System.out.println("get : to get an employee detail");
+			System.out.println("deletebyname : to delete an employee by name");
 			transaction = sc.next();
 			switch (transaction) {
 			case "save":
@@ -29,6 +30,9 @@ public class EmployeeCRUDExample {
 				break;
 			case "delete":
 				empService.deleteEmployee();
+				break;
+			case "deletebyname":
+				empService.deleteByName();
 				break;
 			case "delete1":
 				empService.deleteEmployee1();

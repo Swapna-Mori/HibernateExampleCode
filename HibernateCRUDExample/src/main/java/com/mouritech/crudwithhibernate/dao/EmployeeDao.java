@@ -3,6 +3,7 @@ package com.mouritech.crudwithhibernate.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -152,6 +153,31 @@ public class EmployeeDao {
 		}catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
+			}
+
+			e.printStackTrace();
+		}
+		
+	}
+
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public void deleteByName(String empName) {
+		Transaction transaction1 = null;
+		try (Session session1 = HibernateUtil.getSessionFactory().openSession()) {
+			
+			// start the transaction
+			transaction1 = session1.beginTransaction();
+			//String deleteSql = "Delete from Employee Where empName = :empName";
+			Query<Employee> deleteQuery = session1.createQuery
+					("delete from Employee where empName = :empName");
+			deleteQuery.setParameter("empName",empName);
+			int deleteStatus = deleteQuery.executeUpdate();
+			System.out.println(deleteStatus);
+			transaction1.commit();
+			
+		}catch (Exception e) {
+			if (transaction1 != null) {
+				transaction1.rollback();
 			}
 
 			e.printStackTrace();

@@ -231,3 +231,19 @@ Write code for finding the customer using the customer name
 delete the customer using customer emailid
 update customer mobile number using customer name
 
+Practice Program on Hibernate Criteria Query 
+========================================
+Write code for finding the customer using the customer name whose name starts with 's'.
+
+update the customer model class with new attribute customerAge
+
+then 
+
+write the code for finding all customers whose age is >25 and less than 55
+
+Associations in Hibernate
+======================
+one to one
+one to many
+many to one
+many to many

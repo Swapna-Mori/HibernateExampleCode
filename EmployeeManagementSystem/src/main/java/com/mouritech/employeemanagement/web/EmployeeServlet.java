@@ -49,10 +49,10 @@ public class EmployeeServlet extends HttpServlet {
 				listEmployee(req,resp);
 				break;
 			case "/update":
-					updateEmployee(req,resp);
+				updateEmployee(req,resp);
 				break;
-			case "/edit":
-					
+			case "/edit":	
+				showEditEmployeeForm(req,resp);
 				break;
 			case "/delete":
 				deleteEmployee(req,resp);
@@ -67,13 +67,32 @@ public class EmployeeServlet extends HttpServlet {
 		
 	}//close of doPost
 	
-	private void updateEmployee(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+	private void showEditEmployeeForm(HttpServletRequest req, HttpServletResponse resp) 
+			throws IOException,ServletException,SQLException {
+		Integer empid = Integer.parseInt(req.getParameter("id"));
+		
+		Employee existingEmployee = empDao.getEmployee(empid);
+		RequestDispatcher rd = req.getRequestDispatcher("employee-form.jsp");
+		req.setAttribute("existingEmployee", existingEmployee);
+		rd.forward(req, resp);
+	}
+
+	private void updateEmployee(HttpServletRequest req, HttpServletResponse resp) 	
+			throws IOException,ServletException,SQLException {
+		Integer empid = Integer.parseInt(req.getParameter("eid"));
+		String empname = req.getParameter("ename");
+		String empemail = req.getParameter("eemail");
+		String empmobno = req.getParameter("emobno");
+		
+		Employee emp = new Employee(empid,empname,empemail,empmobno);
+		empDao.updateEmployee(emp);
+		resp.sendRedirect("list");
 		
 	}
 
-	private void deleteEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		Long empid = (long) Integer.parseInt(req.getParameter("id"));
+	private void deleteEmployee(HttpServletRequest req, HttpServletResponse resp) 
+			throws IOException,ServletException,SQLException {
+		Integer empid = Integer.parseInt(req.getParameter("id"));
 		empDao.deleteEmployee(empid);
 		resp.sendRedirect("list");
 		

@@ -18,7 +18,7 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "employeeid")
-	private Long empId;
+	private int empId;
 	
 	@Column(name = "employeename")
 	@Size(min=3)
@@ -43,7 +43,7 @@ public class Employee {
 		this.empMobileNo = empMobileNo;
 	}
 
-	public Employee(Long empId, String empName, String empEmail, String empMobileNo) {
+	public Employee(int empId, String empName, String empEmail, String empMobileNo) {
 		super();
 		this.empId = empId;
 		this.empName = empName;
@@ -51,11 +51,11 @@ public class Employee {
 		this.empMobileNo = empMobileNo;
 	}
 
-	public Long getEmpId() {
+	public int getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(Long empId) {
+	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
 

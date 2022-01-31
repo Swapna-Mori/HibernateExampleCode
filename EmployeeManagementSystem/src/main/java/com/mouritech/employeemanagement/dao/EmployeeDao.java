@@ -55,4 +55,29 @@ public class EmployeeDao {
 		}
 	}
 
+	public void deleteEmployee(Long empid) {
+		Transaction transaction = null;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			
+			// start the transaction
+			transaction = session.beginTransaction();
+			//find the employee object from the database
+			Employee emp = session.get(Employee.class, empid);
+			if(emp != null) {
+			// delete the employee object in to database
+			session.delete(emp);
+			System.out.println("Employee deleted");
+			}
+			// commit transaction
+			transaction.commit();
+		}catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+
+			e.printStackTrace();
+		}
+		
+	}
+
 }

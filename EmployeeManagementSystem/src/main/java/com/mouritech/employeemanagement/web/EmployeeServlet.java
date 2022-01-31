@@ -49,10 +49,13 @@ public class EmployeeServlet extends HttpServlet {
 				listEmployee(req,resp);
 				break;
 			case "/update":
-
+					updateEmployee(req,resp);
 				break;
 			case "/edit":
-
+					
+				break;
+			case "/delete":
+				deleteEmployee(req,resp);
 				break;
 			default:
 				break;
@@ -64,6 +67,18 @@ public class EmployeeServlet extends HttpServlet {
 		
 	}//close of doPost
 	
+	private void updateEmployee(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void deleteEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		Long empid = (long) Integer.parseInt(req.getParameter("id"));
+		empDao.deleteEmployee(empid);
+		resp.sendRedirect("list");
+		
+	}
+
 	private void insertEmployee(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		

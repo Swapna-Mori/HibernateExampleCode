@@ -40,10 +40,10 @@ public class EmployeeServlet extends HttpServlet {
 
 			switch (action) {
 			case "/new":
-
+				showNewEmployeeForm(req,resp);
 				break;
 			case "/insert":
-
+				insertEmployee(req,resp);
 				break;
 			case "/list":
 				listEmployee(req,resp);
@@ -64,7 +64,29 @@ public class EmployeeServlet extends HttpServlet {
 		
 	}//close of doPost
 	
-	private void listEmployee(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException ,SQLException {
+	private void insertEmployee(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		
+		//Long empid =      (long) Integer.parseInt(req.getParameter("eid"));
+		String empname = req.getParameter("ename");
+		String empemail = req.getParameter("eemail");
+		String empmobno = req.getParameter("emobno");
+		
+		Employee emp = new Employee(empname,empemail,empmobno);
+		empDao.saveEmployee(emp);
+		resp.sendRedirect("list");
+		
+	}
+
+	private void showNewEmployeeForm(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		RequestDispatcher rd = req.getRequestDispatcher("employee-form.jsp");
+		rd.forward(req, resp);
+		
+	}
+
+	private void listEmployee(HttpServletRequest req,HttpServletResponse res) 
+			throws ServletException, IOException ,SQLException {
 		
 		List<Employee> listOfEmployees  = empDao.getAllEmployees();
 		req.setAttribute("listEmp",listOfEmployees );

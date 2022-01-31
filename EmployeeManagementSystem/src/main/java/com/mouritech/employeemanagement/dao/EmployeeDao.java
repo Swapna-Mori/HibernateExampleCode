@@ -36,4 +36,23 @@ public class EmployeeDao {
 		return empList;
 	}
 
+	public void saveEmployee(Employee emp) {
+		Transaction transaction = null;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			
+			// start the transaction
+			transaction = session.beginTransaction();
+			// save the employee object in to database
+			session.save(emp);
+			// commit transaction
+			transaction.commit();
+		}catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+
+			e.printStackTrace();
+		}
+	}
+
 }

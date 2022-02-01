@@ -2,10 +2,15 @@ package com.mouritech.crudwithhibernate;
 
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.mouritech.crudwithhibernate.service.EmployeeService;
+//import com.mouritech.crudwithhibernate.util.HibernateUtil;
 
 public class EmployeeCRUDExample {
 
+	//private static final Logger logger = LogManager.getLogger(EmployeeCRUDExample.class); 
 	public static void main(String[] args) {
 		char ch = 'y';
 		String transaction = null;

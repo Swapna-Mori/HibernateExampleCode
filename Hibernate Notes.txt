@@ -254,4 +254,29 @@ Table per class hierarchy
 Table per subclass
 Table per concrete class
 
+NamedQuery Practice
+==================
+Write the named query for finding the bankaccounts whose balance is < 25000
+Write the named query for finding all accounts whose accname starts with A
+Write the named query for finding all accountType savingsaccount when created using perclass hierarchy
+
+Log4j
+====
+is an open source software and a logging library in java which is widely used by businesses and web portals
+
+Levels of Logging
+===============
+OFF => turn off the logging
+CONFIG => static configuration messages
+INFO => informational log messages
+SEVERE => application failure messages
+WARNING => a problem with application
+
+
+
+
+
+
+
+
 

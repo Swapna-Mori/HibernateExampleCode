@@ -12,12 +12,18 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.mouritech.emswithrestandhibernate.entity.Employee;
 import com.mouritech.emswithrestandhibernate.service.EmployeeService;
+import com.mouritech.emswithrestandhibernate.util.HibernateUtil;
+
 
 @Path("api/v1/employee")
 public class EmployeeController {
-	
+	private static Logger logger = LogManager.getLogger(EmployeeController.class);
+
 	EmployeeService empService = new EmployeeService();
 	
 	@Path("/getallemployees")

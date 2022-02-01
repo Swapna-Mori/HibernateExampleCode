@@ -2,11 +2,16 @@ package com.mouritech.emswithrestandhibernate.util;
 
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
+
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+
+
 
 import com.mouritech.emswithrestandhibernate.entity.Employee;
 
@@ -15,6 +20,7 @@ import com.mouritech.emswithrestandhibernate.entity.Employee;
 
 public class HibernateUtil {
 	
+	private static final Logger logger = LogManager.getLogger(HibernateUtil.class);
 	private static SessionFactory sessionFactory;
 	
 	public static SessionFactory getSessionFactory() {

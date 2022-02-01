@@ -247,3 +247,11 @@ one to one
 one to many
 many to one
 many to many
+
+Inheritance in Hibernate
+====================
+Table per class hierarchy
+Table per subclass
+Table per concrete class
+
+

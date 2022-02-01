@@ -76,4 +76,18 @@ public class EmployeeService {
 		empdao.deleteByName(empName);
 	}
 
+	public void getEmployeeByName() {
+		System.out.println("Enter the employee name....");
+		String empName=sc.nextLine();
+		empdao.getEmployeeByName(empName);
+		
+	}
+
+	public void getEmployeeByEmail() {
+		System.out.println("Enter the employee email....");
+		String empEmail=sc.nextLine();
+		empdao.getEmployeeByEmail(empEmail);
+		
+	}
+
 }

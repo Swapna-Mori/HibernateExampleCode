@@ -20,6 +20,8 @@ public class EmployeeCRUDExample {
 			System.out.println("getall : to get all employee details");
 			System.out.println("get : to get an employee detail");
 			System.out.println("deletebyname : to delete an employee by name");
+			System.out.println("searchempbyname : to search an employee using name");
+			System.out.println("searchempbyemail : to search an employee using name");
 			transaction = sc.next();
 			switch (transaction) {
 			case "save":
@@ -42,6 +44,12 @@ public class EmployeeCRUDExample {
 				break;
 			case "get":
 				empService.getEmployeeeById();
+				break;
+			case "searchempbyname":
+				empService.getEmployeeByName();
+				break;
+			case "searchempbyemail":
+				empService.getEmployeeByEmail();
 				break;
 			default:
 				System.out.println("Not a valid transaction");

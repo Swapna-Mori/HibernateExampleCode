@@ -15,10 +15,6 @@ import javax.ws.rs.core.MediaType;
 import com.mouritech.emswithrestandhibernate.entity.Employee;
 import com.mouritech.emswithrestandhibernate.service.EmployeeService;
 
-
-
-
-
 @Path("api/v1/employee")
 public class EmployeeController {
 	

@@ -1,7 +1,10 @@
 package com.mouritech.crudwithhibernate.dao;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -183,6 +186,57 @@ public class EmployeeDao {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void getEmployeeByName(String empName) {
+		Transaction transaction1 = null;
+		try (Session session1 = HibernateUtil.getSessionFactory().openSession()) {
+			// start the transaction
+			transaction1 = session1.beginTransaction();
+			//Hibernate Named Query Example
+			TypedQuery<Employee> empNamedquery = session1.getNamedQuery("searchEmployeeByName");
+			empNamedquery.setParameter("name", empName);
+			List<Employee> employeesWithName = empNamedquery.getResultList();
+			
+			Iterator<Employee> empItr = employeesWithName.iterator();
+			while(empItr.hasNext()) {
+				Employee emp = empItr.next();
+				System.out.println(emp);
+			}
+			
+		}catch (Exception e) {
+			if (transaction1 != null) {
+				transaction1.rollback();
+			}
+
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void getEmployeeByEmail(String empEmail) {
+		Transaction transaction1 = null;
+		try (Session session1 = HibernateUtil.getSessionFactory().openSession()) {
+			// start the transaction
+			transaction1 = session1.beginTransaction();
+			//Hibernate Named Query Example
+			TypedQuery<Employee> empEmailquery = session1.getNamedQuery("searchEmployeeByEmail");
+			empEmailquery.setParameter("email", empEmail);
+			List<Employee> employeesWithEmail = empEmailquery.getResultList();
+			
+			Iterator<Employee> empItr1 = employeesWithEmail.iterator();
+			while(empItr1.hasNext()) {
+				Employee emp = empItr1.next();
+				System.out.println(emp);
+			}
+			
+		}catch (Exception e) {
+			if (transaction1 != null) {
+				transaction1.rollback();
+			}
+
+			e.printStackTrace();
+		}
 	}
 
 }
